@@ -7,13 +7,12 @@
 
 eeglab
 
+% adapt this
 participant='8725';
-
 path=['/Users/jachs/Desktop/Jamyang_Project/DreemEEG/' participant '/']
-%path=['/Users/jachs/Desktop/Jamyang_Project/DreemEEG/' part '/'];
-
 cd (path)
 
+% make directories
 mkdir ('1-matfiles')
 mkdir ('2-setfiles')
 mkdir ('3-cutfiles')
@@ -34,8 +33,6 @@ dreem_highpass(path,hp)
 %rec_length(2,:)=rec_length(1,:)/250 % length in seconds
 %rec_length(3,:)=rec_length(2,:)/60 % length in minutes
 
-%make path the participant directory
-
 
 %epoch
 inpath=[path '/3-cutfiles/']
@@ -50,10 +47,7 @@ dreem_8secs(inpath,outpath,epoch_length)
 % then save the file into a folder called 5-cut
 
 participant='8725';
-
 path=['/Users/jachs/Desktop/Jamyang_Project/DreemEEG/' participant '/'];
-%path=['/Users/jachs/Desktop/Jamyang_Project/DreemEEG/' part '/'];
-
 cd (path);
 
 mkdir ('5-cut')
@@ -82,7 +76,6 @@ EEG.setname
 %% Get the epoch count
 participant='5644_YaroslaveFalcon/';
 folder='/5-rej_epoch/';
-%inpath= ['/Users/jachs/Desktop/Valencia/2 Retreat April 2019/EEG-Group2/' participant folder];
 inpath=['/Users/jachs/Desktop/Jamyang_Project/DreemEEG/' participant folder];
 
 epoch_count=countepochs(inpath);
@@ -98,7 +91,7 @@ filename=[name '_hp_4sec_labelled.set'];
 
 EEG = pop_loadset('filename',filename,'filepath',inpath);
 eeglab redraw
-%remove channels
+% channels to be removed 
 chan=[2,6];
 EEG.data(chan,:,:)=0;
 eeglab redraw
@@ -123,7 +116,8 @@ eeglab redraw
 inpath=[path '4-epoch8secs']
 outpath=[path '5-alphadata']
 
-%dreemhilbert calls runhilbert, third input is desired frequency band
+% dreemhilbert calls runhilbert, third input is desired frequency band
+% choose from alpha beta theta delta
 hilbdata = dreemhilbert(inpath,outpath,'alpha');
 
 %%
