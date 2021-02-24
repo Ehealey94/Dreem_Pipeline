@@ -13,10 +13,10 @@ path=['/Users/jachs/Desktop/Jamyang_Project/DreemEEG/' participant '/']
 cd (path)
 
 % make directories
-% mkdir ('1-matfiles')
-% mkdir ('2-setfiles')
-% mkdir ('3-cutfiles')
-% mkdir ('4-epoch4secs')
+mkdir ('1-matfiles')
+mkdir ('2-setfiles')
+mkdir ('3-cutfiles')
+mkdir ('4-epoch4secs')
 
 %create mat file from .h5
 [data,start_time]=h5tomat(path)
