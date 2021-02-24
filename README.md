@@ -1,8 +1,8 @@
 # Dreem_Pipeline
 
-This is a preprocessing pipeline for dreem data files.
+This is a preprocessing pipeline for dreem data files. Start out with the _master_ script, which rules them all.
 
-It also contains some additional analysis options, such as calculating wpli, frontal alpha asymmetry and slope/offset
+The pipeline also contains some additional analysis options, such as calculating wpli, frontal alpha asymmetry and slope/offset
 
 To run this script you need to download and add to your matlab path:
 - eeglab 
