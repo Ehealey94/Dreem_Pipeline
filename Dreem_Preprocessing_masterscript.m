@@ -91,8 +91,10 @@ filename=[name '_hp_4sec_labelled.set'];
 
 EEG = pop_loadset('filename',filename,'filepath',inpath);
 eeglab redraw
-% channels to be removed 
-chan=[2,6];
+
+% Once you have checked your data again in eeglab,
+select channels to be removed 
+chan=[];
 EEG.data(chan,:,:)=0;
 eeglab redraw
 %save dataset
@@ -140,14 +142,14 @@ hilbdata = dreemhilbert(inpath,outpath,'alpha');
 % = -O2 + O1
 %
 % O1-O2 = EEG.data(2,:,:)-EEG.data(1,:,:)
-EEG.data(8,:,:)=EEG.data(2,:,:)-EEG.data(1,:,:)
+% EEG.data(8,:,:)=EEG.data(2,:,:)-EEG.data(1,:,:)
 
 
 % TEST: use the same calculation to calculate existing channel 4;
 %
 % (chan 3 - chan 7) should be the same as channel 4
 
-EEG.data(9,:,:)=EEG.data(3,:,:)-EEG.data(7,:,:)
+% EEG.data(9,:,:)=EEG.data(3,:,:)-EEG.data(7,:,:)
 %% calculate wPLI
 eeglab
 
