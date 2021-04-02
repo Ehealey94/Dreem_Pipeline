@@ -64,7 +64,7 @@ mkdir ('6-removechan')
 % EEG=cut20minutes(inpath,outpath,i,newlength);
 %% now clean the data by rejecting bad epochs using an adapted version
 % of Sri's bad_epochs script
-
+i=1
 inpath=[path '/5-cut/'];
 outpath=[path '/6-rej_epoch/'];
 
