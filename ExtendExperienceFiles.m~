@@ -3,15 +3,20 @@
 % 1. extends the cluster files to match the EEG files
 % 2. removes the epochs in rej.epochs from the cluster files
 % 3. saves them in the format fileId??_long.mat
-% 4. removes all the non meditation epochs
-% 5. saves meditation data only in 7-med
-% Input: Mat file where each column is an experience dimension 
-% (works also if other data is included as columns, eg. group or session id,
-% as it uses imresize function and replicates existing values (no smoothing))
+% 4. removes all the non meditation epochs (this is commented out)
+% 5. saves meditation EEG data only in 7-med (this is commented out)
+% 6. it skips files that are too short (line 84)
+
+
+% Inputs: 
+% 1 - Mat file where each column is an experience dimension 
+% (works also if categorical data is included as columns, eg. group or session id,
+% as it uses imresize function and replicates existing values without smoothing)
+% 2 - the cleaned EEG file with information 
 
 clear all
 close all
-% Tibetan Home Participants
+
 Participant={'1425',...
     '1733_BandjarmasinKomodoDragon',...
     '1871',... 
@@ -39,9 +44,9 @@ for part=1:length(Participant)
     TETinpath=[filepath participant infolder ];
     EEGinpath=[filepath participant '/6-rej_epoch/'];
     TEToutpath=[filepath participant outfolder];
-    EEGoutpath=[filepath participant '/7-med/'];
+%     EEGoutpath=[filepath participant '/7-med/'];
     mkdir(TEToutpath)
-    mkdir(EEGoutpath)
+%     mkdir(EEGoutpath)
     
     TETfiles=dir([TETinpath '*_TET.mat']);
     

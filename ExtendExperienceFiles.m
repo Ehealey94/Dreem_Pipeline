@@ -4,8 +4,10 @@
 % 2. removes the epochs in rej.epochs from the cluster files
 % 3. saves them in the format fileId??_long.mat
 % 4. removes all the non meditation epochs (this is commented out)
-% 5. saves meditation data only in 7-med
+% 5. saves meditation EEG data only in 7-med (this is commented out)
 % 6. it skips files that are too short (line 84)
+
+
 % Inputs: 
 % 1 - Mat file where each column is an experience dimension 
 % (works also if categorical data is included as columns, eg. group or session id,
@@ -42,9 +44,9 @@ for part=1:length(Participant)
     TETinpath=[filepath participant infolder ];
     EEGinpath=[filepath participant '/6-rej_epoch/'];
     TEToutpath=[filepath participant outfolder];
-    EEGoutpath=[filepath participant '/7-med/'];
+%     EEGoutpath=[filepath participant '/7-med/'];
     mkdir(TEToutpath)
-    mkdir(EEGoutpath)
+%     mkdir(EEGoutpath)
     
     TETfiles=dir([TETinpath '*_TET.mat']);
     
@@ -70,7 +72,8 @@ for part=1:length(Participant)
         
         %how many epochs before cleaning? 20 minutes==300 epochs
        % twentyminutes=300;
-        
+       
+% UNCOMMENT to select certain epoch types, and save them as a separate EEG file    
 %         %select only Med epochs and save
 %         try
 %             EEG=pop_selectevent(EEG,'type', 'Med')
