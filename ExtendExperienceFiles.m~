@@ -12,7 +12,7 @@
 % 1 - Mat file where each column is an experience dimension 
 % (works also if categorical data is included as columns, eg. group or session id,
 % as it uses imresize function and replicates existing values without smoothing)
-% 2 - the cleaned EEG file with information 
+% 2 - the cleaned EEG file with EEG.urevent information or EEG.hist
 
 clear all
 close all
@@ -72,7 +72,8 @@ for part=1:length(Participant)
         
         %how many epochs before cleaning? 20 minutes==300 epochs
        % twentyminutes=300;
-        
+       
+% UNCOMMENT to select certain epoch types, and save them as a separate EEG file    
 %         %select only Med epochs and save
 %         try
 %             EEG=pop_selectevent(EEG,'type', 'Med')

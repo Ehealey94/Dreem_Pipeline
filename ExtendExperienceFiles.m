@@ -12,7 +12,8 @@
 % 1 - Mat file where each column is an experience dimension 
 % (works also if categorical data is included as columns, eg. group or session id,
 % as it uses imresize function and replicates existing values without smoothing)
-% 2 - the cleaned EEG file with information 
+% 2 - the cleaned EEG file with EEG.urevent information or EEG.history if
+% that doesn't work
 
 clear all
 close all
@@ -54,6 +55,8 @@ for part=1:length(Participant)
     for i = 1:length(TETfiles)
         m3=[];m2=[];nepochs=[];B=[];A=[];ismem=[];
         load ([TETinpath TETfiles(i).name ]);
+        
+        Columns=size(Subjective,2)
         TETfileID= erase(TETfiles(i).name, '_TET.mat');
         fileIDinTable=[TETfileID '.h5'];
         
@@ -70,10 +73,7 @@ for part=1:length(Participant)
         
         nepochs=length(EEG.urevent);
         
-        %how many epochs before cleaning? 20 minutes==300 epochs
-       % twentyminutes=300;
-       
-% UNCOMMENT to select certain epoch types, and save them as a separate EEG file    
+% % % % UNCOMMENT to select certain epoch types and save them as a separate EEG file    
 %         %select only Med epochs and save
 %         try
 %             EEG=pop_selectevent(EEG,'type', 'Med')
@@ -105,7 +105,7 @@ for part=1:length(Participant)
             % renumber the events so that first event is the first event in
             % meditation
             c=b-(urmedstart-1);
-            m2 = imresize(Subjective, [meddur 17], 'nearest');
+            m2 = imresize(Subjective, [meddur Columns], 'nearest');
             m3=m2;
             m3(c,:)=[];
             
@@ -129,7 +129,7 @@ for part=1:length(Participant)
                 % renumber the events so that first event is the first event in
                 % meditation
                 c=b-(urmedstart-1);
-                m2 = imresize(Subjective, [meddur 17], 'nearest');
+                m2 = imresize(Subjective, [meddur Columns], 'nearest');
                 m3=m2;
                 m3(c,:)=[];
             end
@@ -140,7 +140,7 @@ for part=1:length(Participant)
         if length(EEG.epoch)~=length(m3)
                  warning (['The TET and EEG epochs are not the same length in file ' TETfileID])
                 %cop out
-                m3=imresize(Subjective,[length(EEG.epoch) 17],'nearest');
+                m3=imresize(Subjective,[length(EEG.epoch) Columns],'nearest');
                 length(EEG.epoch)~=length(m3)
                 save([TEToutpath TETfileID '_long'], 'm3')
         
