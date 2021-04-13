@@ -3,18 +3,15 @@
 % 1. extends the cluster files to match the EEG files
 % 2. removes the epochs in rej.epochs from the cluster files
 % 3. saves them in the format fileId??_long.mat
-% 4. removes all the non meditation epochs (this is commented out)
+% 4. removes all the non meditation epochs
 % 5. saves meditation data only in 7-med
-% 6. it skips files that are too short (line 84)
-% Inputs: 
-% 1 - Mat file where each column is an experience dimension 
-% (works also if categorical data is included as columns, eg. group or session id,
-% as it uses imresize function and replicates existing values without smoothing)
-% 2 - the cleaned EEG file with information 
+% Input: Mat file where each column is an experience dimension 
+% (works also if other data is included as columns, eg. group or session id,
+% as it uses imresize function and replicates existing values (no smoothing))
 
 clear all
 close all
-
+% Tibetan Home Participants
 Participant={'1425',...
     '1733_BandjarmasinKomodoDragon',...
     '1871',... 
