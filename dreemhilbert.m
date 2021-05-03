@@ -18,13 +18,14 @@ mkdir(outpath)
 for i=1:length(files)
     filename=files(i).name
     [pathstr,name,ext] = fileparts([inpath filename])
+    newStr = erase(name,'_hp_4sec_labelled_rej_epoch');
     EEG=[];
     EEG = pop_loadset('filename',filename,'filepath',inpath);
     hilbdata=runhilbert(EEG,freqbin);
     hilbdata = abs(hilbdata).^2; %kills the imaginary part to give power
     SqueezeFrequencies=squeeze(mean(hilbdata)); % averages across the  frequency bin
     hilbdata=squeeze(mean(SqueezeFrequencies,2)); %Averages across the 1000 seconds in the epoch
-    newname=[outpath '/' name '_hilbdata_' freqband ];
+    newname=[outpath '/' newStr '_hilbdata_' freqband ];
     save(newname,'hilbdata')
 end
 end
