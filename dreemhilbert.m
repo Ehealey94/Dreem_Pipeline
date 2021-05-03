@@ -6,7 +6,9 @@ elseif freqband=='beta'
 elseif freqband=='theta'
     freqbin=[4:0.5:7];
 elseif freqband=='delta'
-    freqbin=[0.5:0.5:4];
+    freqbin=[0.5:0.5:4]; 
+elseif freqband=='gamma'
+    freqbin=[31:0.5:50];
 else 
     disp('not a valid frequency band')
 end
@@ -22,7 +24,7 @@ for i=1:length(files)
     hilbdata = abs(hilbdata).^2; %kills the imaginary part to give power
     SqueezeFrequencies=squeeze(mean(hilbdata)); % averages across the  frequency bin
     hilbdata=squeeze(mean(SqueezeFrequencies,2)); %Averages across the 1000 seconds in the epoch
-    newname=[outpath '/hilbdata_' freqband ];
+    newname=[outpath '/' name '_hilbdata_' freqband ];
     save(newname,'hilbdata')
 end
 end

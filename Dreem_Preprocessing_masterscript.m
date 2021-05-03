@@ -93,7 +93,7 @@ EEG = pop_loadset('filename',filename,'filepath',inpath);
 eeglab redraw
 
 % Once you have checked your data again in eeglab,
-select channels to be removed 
+% select channels to be removed 
 chan=[];
 EEG.data(chan,:,:)=0;
 eeglab redraw
@@ -119,7 +119,7 @@ inpath=[path '6-rej_epoch']
 outpath=[path '12-alphadata']
 mkdir(outpath)
 % dreemhilbert calls runhilbert, third input is desired frequency band
-% choose from alpha beta theta delta
+% choose from alpha beta theta delta gamma
 hilbdata = dreemhilbert(inpath,outpath,'alpha');
 
 %%
