@@ -68,9 +68,7 @@ for part=1:length(Participant)
         EEGfilename=findfiles.name;
         EEG=[];
         EEG = pop_loadset('filename',EEGfilename,'filepath',EEGinpath);
-        
-        
-        
+      
         nepochs=length(EEG.urevent);
         
 % % % % UNCOMMENT to select certain epoch types and save them as a separate EEG file    
@@ -81,9 +79,9 @@ for part=1:length(Participant)
 %             EEG = pop_saveset( EEG, 'filename',[TETfileID '_med.set'],'filepath', EEGoutpath);
 %         catch
 %             disp(['empty file ' TETfileID])
-%         end
-%         
-        %skips EEG files that are shorter than 75 epochs (5 minutes)
+%         end         
+        
+%         skips EEG files that are shorter than 75 epochs (5 minutes)
         if length(EEG.epoch)<75
             continue
         end

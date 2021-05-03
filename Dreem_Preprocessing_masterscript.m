@@ -115,9 +115,9 @@ ep=EEG.rejepoch';
 eeglab redraw
 
 %% Run Hilbert
-inpath=[path '4-epoch8secs']
-outpath=[path '5-alphadata']
-
+inpath=[path '6-rej_epoch']
+outpath=[path '12-alphadata']
+mkdir(outpath)
 % dreemhilbert calls runhilbert, third input is desired frequency band
 % choose from alpha beta theta delta
 hilbdata = dreemhilbert(inpath,outpath,'alpha');
