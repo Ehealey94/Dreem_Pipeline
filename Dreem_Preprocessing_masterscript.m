@@ -114,13 +114,16 @@ EEG=bad_epochs(inpath,outpath,i);
 ep=EEG.rejepoch';
 eeglab redraw
 
+
 %% Run Hilbert
+
 inpath=[path '6-rej_epoch/']
 outpath=[path '12-alphadata/']
 mkdir(outpath)
 % dreemhilbert calls runhilbert, third input is desired frequency band
 % choose from alpha beta theta delta gamma
 hilbdata = dreemhilbert(inpath,outpath,'alpha');
+
 
 %%
 % Creating three ROIs
