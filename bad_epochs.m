@@ -13,12 +13,12 @@ for i=i
     EEG=[];
     EEG = pop_loadset('filename',filename,'filepath',inpath);
     RejTrials(1,i)=EEG.trials;
-    opts.reject = 1; opts.recon = 0;
-    opts.threshold = 1; opts.slope = 0;
+    optns.reject = 1; optns.recon = 0;
+    optns.threshold = 1; optns.slope = 0;
     try
         %[EEG,rejtrialcount] = preprocess_manageBadTrials(EEG,opts);
         %RejTrials(2,i)=rejtrialcount;
-        EEG = preprocess_manageBadTrials(EEG,opts);
+        EEG = preprocess_manageBadTrials(EEG,optns);
         EEG = pop_saveset( EEG, 'filename',[name '_rej_epoch.set'],'filepath', outpath);
         %RejTrials(3,i)=EEG.trials
      catch

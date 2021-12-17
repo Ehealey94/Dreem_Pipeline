@@ -109,7 +109,7 @@ EEG = pop_saveset( EEG, 'filename',[name '_rmchan.set'],'filepath', outpath);
 inpath=[path '/6-removechan/'];
 outpath=[path '/6-rej_epoch/'];
 %select which number of file in this folder
-i=1
+i=1;
 EEG=bad_epochs(inpath,outpath,i);
 ep=EEG.rejepoch';
 eeglab redraw
@@ -117,8 +117,8 @@ eeglab redraw
 
 %% Run Hilbert
 
-inpath=[path '6-rej_epoch/']
-outpath=[path '12-alphadata/']
+inpath=[path '6-rej_epoch/'];
+outpath=[path '12-alphadata/'];
 mkdir(outpath)
 % dreemhilbert calls runhilbert, third input is desired frequency band
 % choose from alpha beta theta delta gamma
