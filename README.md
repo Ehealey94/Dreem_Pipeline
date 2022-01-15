@@ -12,7 +12,7 @@ To run this script you need to download and add to your matlab path:
 
 #### Update to .h5 file structure
 
-Files recorded after 01.01.2022 have a new structure, so that the EEG data location has changed from
+Files recorded after July 2021 may have a new structure, so that the EEG data location has changed from
 '/channel1/visualization'
 to
 '/eeg1/filtered' (3 notch filters+ bandpass filtered betweeb 0.4Hz and 35Hz)
