@@ -5,10 +5,12 @@ This is a preprocessing pipeline for dreem data files. Start out with the _maste
 The pipeline also contains some additional analysis options, such as calculating wpli, frontal alpha asymmetry and slope/offset
 
 To run this script you need to download and add to your matlab path:
-- EEGLAB https://sccn.ucsd.edu/eeglab/download.php 
-- Sri's manage_badTrials https://github.com/SridharJagannathan/manage_badTrials
-- to calculate slope/offset: the matlab wrapper for fooof tools (see https://fooof-tools.github.io/fooof/auto_tutorials/index.html)
 
+- [EEGLAB](https://sccn.ucsd.edu/eeglab/download.php)
+- Sri's [manage_badTrials](https://github.com/SridharJagannathan/manage_badTrials)
+- The matlab wrapper for [fooof tools](https://fooof-tools.github.io/fooof/auto_tutorials/index.html)
+
+Additionally, make sure the [MATLAB signal processing toolbox](https://uk.mathworks.com/products/signal.html) is installed 
 
 #### Update to .h5 file structure
 
